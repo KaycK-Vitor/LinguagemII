@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package JavaSwing_06.ExemplosCompletosSemBancoDeDados.SistemaIFBA;
+package JavaSwing_06.ExemplosCompletos.SistemaIFBA;
 
 /**
  *

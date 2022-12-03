@@ -104,6 +104,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditosActionPerformed
 
         TelaCreditos telaCreditos = new TelaCreditos();
+        telaCreditos.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                
         telaCreditos.setVisible(true);
 
     }//GEN-LAST:event_btnCreditosActionPerformed

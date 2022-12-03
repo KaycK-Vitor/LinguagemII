@@ -32,7 +32,7 @@ public class TelaCreditos extends javax.swing.JFrame {
         lblNome2 = new javax.swing.JLabel();
         lblNome3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema IFBA");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N

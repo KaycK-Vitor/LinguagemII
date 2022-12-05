@@ -98,11 +98,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditosActionPerformed
 
     private void btnManterClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterClientesActionPerformed
-        // TODO add your handling code here:
+        TelaManterClientes telaManterClientes = new TelaManterClientes();
+        telaManterClientes.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                
+        telaManterClientes.setVisible(true);
     }//GEN-LAST:event_btnManterClientesActionPerformed
 
     private void btnManterProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterProdutosActionPerformed
-        // TODO add your handling code here:
+        TelaManterProdutos telaManterProdutos = new TelaManterProdutos();
+        telaManterProdutos.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                
+        telaManterProdutos.setVisible(true);
     }//GEN-LAST:event_btnManterProdutosActionPerformed
 
     public static void main(String args[]) {

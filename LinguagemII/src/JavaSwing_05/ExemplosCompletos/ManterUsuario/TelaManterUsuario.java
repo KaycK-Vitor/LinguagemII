@@ -21,7 +21,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         lblCPF = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblUsuarios = new javax.swing.JTable();
         btnCadastrar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
@@ -42,9 +42,14 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         lblCPF.setText("Senha:");
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
 
-        tblCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -60,13 +65,13 @@ public class TelaManterUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblCliente.setRowHeight(30);
-        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblUsuarios.setRowHeight(30);
+        tblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClienteMouseClicked(evt);
+                tblUsuariosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblCliente);
+        jScrollPane1.setViewportView(tblUsuarios);
 
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCadastrar.setText("Cadastrar");
@@ -88,6 +93,11 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         lblCodigo.setText("Código:");
 
         txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyTyped(evt);
+            }
+        });
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAlterar.setText("Alterar");
@@ -106,14 +116,13 @@ public class TelaManterUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addGap(378, 378, 378)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAlterar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExcluir))
-                            .addComponent(btnCadastrar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCadastrar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +139,10 @@ public class TelaManterUsuario extends javax.swing.JFrame {
                                     .addGap(20, 20, 20)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(txpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,7 +185,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
     if(!codigo.equals("") && !nome.equals("") && !senha.equals(""))
     {
     
-      DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+      DefaultTableModel tabelaUsuarios = (DefaultTableModel) tblUsuarios.getModel();
         
       Object[] Usuario = new Object[]
       {
@@ -182,7 +194,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         senha
       };
         
-      tabelaCliente.addRow(Usuario);
+      tabelaUsuarios.addRow(Usuario);
         
       LimparCampos();
     
@@ -204,7 +216,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
     
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblUsuarios.getSelectedRow();
         
         if(linhaSelecionada == -1)
         {
@@ -212,9 +224,9 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         }
         else
         {
-            DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+            DefaultTableModel tabelaUsuarios = (DefaultTableModel) tblUsuarios.getModel();
             
-            tabelaCliente.removeRow(linhaSelecionada);
+            tabelaUsuarios.removeRow(linhaSelecionada);
             
             JOptionPane.showMessageDialog(this, "Usuário excluído com sucesso!");
         }
@@ -224,7 +236,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblUsuarios.getSelectedRow();
         
         if(linhaSelecionada != -1)
         {
@@ -234,9 +246,9 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         
             if(!codigo.equals("") && !nome.equals("") && !senha.equals(""))
             {
-                tblCliente.setValueAt(codigo, linhaSelecionada, 0);
-                tblCliente.setValueAt(nome, linhaSelecionada, 1);
-                tblCliente.setValueAt(senha, linhaSelecionada, 2);
+                tblUsuarios.setValueAt(codigo, linhaSelecionada, 0);
+                tblUsuarios.setValueAt(nome, linhaSelecionada, 1);
+                tblUsuarios.setValueAt(senha, linhaSelecionada, 2);
                 
                 JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!");
             }
@@ -252,23 +264,51 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+    private void tblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMouseClicked
         
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblUsuarios.getSelectedRow();
         
         if(linhaSelecionada != -1)
         {
-            String codigo = tblCliente.getValueAt(linhaSelecionada, 0).toString();
+            String codigo = tblUsuarios.getValueAt(linhaSelecionada, 0).toString();
             txtCodigo.setText(codigo);
             
-            String nome = tblCliente.getValueAt(linhaSelecionada, 1).toString();
+            String nome = tblUsuarios.getValueAt(linhaSelecionada, 1).toString();
             txtNome.setText(nome);
 
-            String senha = tblCliente.getValueAt(linhaSelecionada, 2).toString();
+            String senha = tblUsuarios.getValueAt(linhaSelecionada, 2).toString();
             txpSenha.setText(senha);            
         }
-    }//GEN-LAST:event_tblClienteMouseClicked
+    }//GEN-LAST:event_tblUsuariosMouseClicked
 
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
+        
+        PermitirDigitarSomenteNumeros(evt);
+    }//GEN-LAST:event_txtCodigoKeyTyped
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        PermitirDigitarSomenteLetras(evt);
+    }//GEN-LAST:event_txtNomeKeyTyped
+
+    private void PermitirDigitarSomenteNumeros(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }
+    
+    private void PermitirDigitarSomenteLetras(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isAlphabetic(c) && c != ' ')
+        {
+            evt.consume();
+        }
+    }
 
     public static void main(String args[]) {
 
@@ -308,7 +348,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JPasswordField txpSenha;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;

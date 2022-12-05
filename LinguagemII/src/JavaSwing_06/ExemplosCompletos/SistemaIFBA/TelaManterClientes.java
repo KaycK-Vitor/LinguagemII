@@ -24,7 +24,7 @@ public class TelaManterClientes extends javax.swing.JFrame {
         lblCpf = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         txfCpf = new javax.swing.JFormattedTextField();
@@ -39,11 +39,21 @@ public class TelaManterClientes extends javax.swing.JFrame {
         lblCodigo.setText("Código:");
 
         txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyTyped(evt);
+            }
+        });
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNome.setText("Nome:");
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
 
         lblCpf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCpf.setText("Cpf:");
@@ -56,8 +66,8 @@ public class TelaManterClientes extends javax.swing.JFrame {
             }
         });
 
-        tblCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,13 +83,13 @@ public class TelaManterClientes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblCliente.setRowHeight(30);
-        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblClientes.setRowHeight(30);
+        tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClienteMouseClicked(evt);
+                tblClientesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblCliente);
+        jScrollPane1.setViewportView(tblClientes);
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAlterar.setText("Alterar");
@@ -111,14 +121,13 @@ public class TelaManterClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addGap(378, 378, 378)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAlterar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExcluir))
-                            .addComponent(btnCadastrar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCadastrar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +145,10 @@ public class TelaManterClientes extends javax.swing.JFrame {
                                     .addComponent(txfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
-                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,7 +191,7 @@ public class TelaManterClientes extends javax.swing.JFrame {
         if(!codigo.equals("") && !nome.equals("") && !cpf.equals(""))
         {
 
-            DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+            DefaultTableModel tabelaClientes = (DefaultTableModel) tblClientes.getModel();
 
             Object[] Cliente = new Object[]
             {
@@ -188,15 +200,15 @@ public class TelaManterClientes extends javax.swing.JFrame {
                 cpf
             };
 
-            tabelaCliente.addRow(Cliente);
+            tabelaClientes.addRow(Cliente);
 
             LimparCampos();
 
-            JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
         }
         else
         {
-            JOptionPane.showMessageDialog(this, "Os campos Código, Nome e Senha são obrigatórios.");
+            JOptionPane.showMessageDialog(this, "Os campos Código, Nome e Cpf são obrigatórios.");
         }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -208,44 +220,44 @@ public class TelaManterClientes extends javax.swing.JFrame {
        txfCpf.setText("");
     }
     
-    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+    private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
 
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblClientes.getSelectedRow();
 
         if(linhaSelecionada != -1)
         {
-            String codigo = tblCliente.getValueAt(linhaSelecionada, 0).toString();
+            String codigo = tblClientes.getValueAt(linhaSelecionada, 0).toString();
             txtCodigo.setText(codigo);
 
-            String nome = tblCliente.getValueAt(linhaSelecionada, 1).toString();
+            String nome = tblClientes.getValueAt(linhaSelecionada, 1).toString();
             txtNome.setText(nome);
 
-            String senha = tblCliente.getValueAt(linhaSelecionada, 2).toString();
+            String senha = tblClientes.getValueAt(linhaSelecionada, 2).toString();
             txfCpf.setText(senha);
         }
-    }//GEN-LAST:event_tblClienteMouseClicked
+    }//GEN-LAST:event_tblClientesMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
 
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblClientes.getSelectedRow();
 
         if(linhaSelecionada != -1)
         {
             String codigo = txtCodigo.getText();
             String nome = txtNome.getText();
-            String senha = String.valueOf(txfCpf.getText());
+            String senha = txfCpf.getText();
 
             if(!codigo.equals("") && !nome.equals("") && !senha.equals(""))
             {
-                tblCliente.setValueAt(codigo, linhaSelecionada, 0);
-                tblCliente.setValueAt(nome, linhaSelecionada, 1);
-                tblCliente.setValueAt(senha, linhaSelecionada, 2);
+                tblClientes.setValueAt(codigo, linhaSelecionada, 0);
+                tblClientes.setValueAt(nome, linhaSelecionada, 1);
+                tblClientes.setValueAt(senha, linhaSelecionada, 2);
 
-                JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!");
+                JOptionPane.showMessageDialog(this, "Cliente alterado com sucesso!");
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "Os campos Código, Nome e Senha são obrigatórios.");
+                JOptionPane.showMessageDialog(this, "Os campos Código, Nome e Cpf são obrigatórios.");
             }
         }
         else
@@ -257,7 +269,7 @@ public class TelaManterClientes extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
-        int linhaSelecionada = tblCliente.getSelectedRow();
+        int linhaSelecionada = tblClientes.getSelectedRow();
 
         if(linhaSelecionada == -1)
         {
@@ -265,16 +277,47 @@ public class TelaManterClientes extends javax.swing.JFrame {
         }
         else
         {
-            DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+            DefaultTableModel tabelaClientes = (DefaultTableModel) tblClientes.getModel();
 
-            tabelaCliente.removeRow(linhaSelecionada);
+            tabelaClientes.removeRow(linhaSelecionada);
 
-            JOptionPane.showMessageDialog(this, "Usuário excluído com sucesso!");
+            JOptionPane.showMessageDialog(this, "Cliente excluído com sucesso!");
         }
 
         LimparCampos();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
+       
+        PermitirDigitarSomenteNumeros(evt);
+        
+    }//GEN-LAST:event_txtCodigoKeyTyped
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        
+        PermitirDigitarSomenteLetras(evt);
+        
+    }//GEN-LAST:event_txtNomeKeyTyped
+
+     private void PermitirDigitarSomenteNumeros(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }
+    
+    private void PermitirDigitarSomenteLetras(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isAlphabetic(c) && c != ' ')
+        {
+            evt.consume();
+        }
+    }
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -313,7 +356,7 @@ public class TelaManterClientes extends javax.swing.JFrame {
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblClientes;
     private javax.swing.JFormattedTextField txfCpf;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;

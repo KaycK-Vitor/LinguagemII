@@ -1,5 +1,6 @@
 package JavaSwing_06.ExemplosCompletos.SistemaIFBA;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -38,6 +39,11 @@ public class TelaLogin extends javax.swing.JFrame {
         lblSenha.setText("Senha:");
 
         txpSenha.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txpSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txpSenhaKeyPressed(evt);
+            }
+        });
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnEntrar.setText("Entrar");
@@ -143,6 +149,17 @@ public class TelaLogin extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void txpSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txpSenhaKeyPressed
+        
+        //Se a tecla digitada for igual a tecla ENTER, faça:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            //Ative o comportando do botão Entrar
+            btnEntrarActionPerformed(null);
+        }
+        
+    }//GEN-LAST:event_txpSenhaKeyPressed
 
     public static void main(String args[]) {
 

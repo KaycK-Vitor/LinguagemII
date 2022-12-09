@@ -1,6 +1,6 @@
 package BancoDeDados_01_Conexao;
 
-public class ProgramaTestaBD {
+public class ProgramaTestarBD {
 
     public static void main(String[] args) {
         

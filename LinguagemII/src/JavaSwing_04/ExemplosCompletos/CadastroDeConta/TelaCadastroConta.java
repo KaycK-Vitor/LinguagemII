@@ -52,13 +52,28 @@ public class TelaCadastroConta extends javax.swing.JFrame {
         lblNumeroDaConta.setText("Número da Conta:");
 
         txtNomeDoCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNomeDoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeDoClienteKeyTyped(evt);
+            }
+        });
 
         txtNumeroDaConta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNumeroDaConta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDaContaKeyTyped(evt);
+            }
+        });
 
         lblSaldoInicialDaConta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSaldoInicialDaConta.setText("Saldo Inicial da Conta:");
 
         txtSaldoInicialDaConta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSaldoInicialDaConta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSaldoInicialDaContaKeyTyped(evt);
+            }
+        });
 
         lblTipoDeConta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTipoDeConta.setText("Tipo de Conta:");
@@ -236,6 +251,48 @@ public class TelaCadastroConta extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void txtNomeDoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeDoClienteKeyTyped
+        PermitirDigitarSomenteLetrasEEspaco(evt);
+    }//GEN-LAST:event_txtNomeDoClienteKeyTyped
+
+    private void txtNumeroDaContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDaContaKeyTyped
+        PermitirDigitarSomenteNumeros(evt);
+    }//GEN-LAST:event_txtNumeroDaContaKeyTyped
+
+    private void txtSaldoInicialDaContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSaldoInicialDaContaKeyTyped
+        PermitirDigitarSomenteNumerosEVirgula(evt);
+    }//GEN-LAST:event_txtSaldoInicialDaContaKeyTyped
+
+    private void PermitirDigitarSomenteNumeros(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c))
+        {
+            evt.consume();
+        }
+    }
+    
+    private void PermitirDigitarSomenteLetrasEEspaco(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isAlphabetic(c) && c != ' ')
+        {
+            evt.consume();
+        }
+    }
+    
+    private void PermitirDigitarSomenteNumerosEVirgula(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c) && c != ',')
+        {
+            evt.consume();
+        }
+    }
+    
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

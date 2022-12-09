@@ -287,7 +287,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
-        PermitirDigitarSomenteLetras(evt);
+        PermitirDigitarSomenteLetrasEEspaco(evt);
     }//GEN-LAST:event_txtNomeKeyTyped
 
     private void PermitirDigitarSomenteNumeros(java.awt.event.KeyEvent evt)
@@ -300,7 +300,7 @@ public class TelaManterUsuario extends javax.swing.JFrame {
         }
     }
     
-    private void PermitirDigitarSomenteLetras(java.awt.event.KeyEvent evt)
+    private void PermitirDigitarSomenteLetrasEEspaco(java.awt.event.KeyEvent evt)
     {
         char c = evt.getKeyChar();
         

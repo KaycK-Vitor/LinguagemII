@@ -28,8 +28,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnManterClientes" max="32767" attributes="0"/>
-                  <Component id="btnManterProdutos" pref="168" max="32767" attributes="0"/>
+                  <Component id="btnGerenciarClientes" max="32767" attributes="0"/>
+                  <Component id="btnGerenciarProdutos" pref="168" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
@@ -51,9 +51,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="109" max="32767" attributes="0"/>
-              <Component id="btnManterClientes" min="-2" max="-2" attributes="0"/>
+              <Component id="btnGerenciarClientes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnManterProdutos" min="-2" max="-2" attributes="0"/>
+              <Component id="btnGerenciarProdutos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Component id="btnCreditos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -88,26 +88,26 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreditosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnManterClientes">
+    <Component class="javax.swing.JButton" name="btnGerenciarClientes">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manter Clientes"/>
+        <Property name="text" type="java.lang.String" value="Gerenciar Clientes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManterClientesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenciarClientesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnManterProdutos">
+    <Component class="javax.swing.JButton" name="btnGerenciarProdutos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="16" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Manter Produtos"/>
+        <Property name="text" type="java.lang.String" value="Gerenciar Produtos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManterProdutosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenciarProdutosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -3,9 +3,9 @@ package JavaSwing_06.ExemplosCompletos.SistemaIFBA;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class TelaManterProdutos extends javax.swing.JFrame {
+public class TelaGerenciarProdutos extends javax.swing.JFrame {
 
-    public TelaManterProdutos() {
+    public TelaGerenciarProdutos() {
         initComponents();
 
         //Iniciar o JFrame no meio da tela.
@@ -36,7 +36,7 @@ public class TelaManterProdutos extends javax.swing.JFrame {
         setResizable(false);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("Manter Produtos");
+        lblTitulo.setText("Gerenciar Produtos");
 
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCodigo.setText("Código:");
@@ -375,19 +375,20 @@ public class TelaManterProdutos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaManterProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaGerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaManterProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaGerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaManterProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaGerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaManterProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaGerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaManterProdutos().setVisible(true);
+                new TelaGerenciarProdutos().setVisible(true);
             }
         });
     }

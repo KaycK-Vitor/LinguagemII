@@ -4,7 +4,7 @@
  */
 package JavaSwing_00.ExemplosDeUtilizacaoDeComponentes;
 
-import JavaSwing_05.ExemplosCompletos.ManterUsuario.TelaManterUsuario;
+import JavaSwing_05.ExemplosCompletos.ManterUsuario.TelaGerenciarUsuario;
 
 /**
  *
@@ -124,7 +124,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuSairMouseClicked
 
     private void MenuClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClienteCadastrarActionPerformed
-        TelaManterUsuario telaCadastroUsuario = new TelaManterUsuario();
+        TelaGerenciarUsuario telaCadastroUsuario = new TelaGerenciarUsuario();
         telaCadastroUsuario.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         telaCadastroUsuario.setVisible(true);
     }//GEN-LAST:event_MenuClienteCadastrarActionPerformed

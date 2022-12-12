@@ -15,8 +15,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         lblTitulo = new javax.swing.JLabel();
         btnCreditos = new javax.swing.JButton();
-        btnManterClientes = new javax.swing.JButton();
-        btnManterProdutos = new javax.swing.JButton();
+        btnGerenciarClientes = new javax.swing.JButton();
+        btnGerenciarProdutos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema IFBA");
@@ -33,19 +33,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnManterClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnManterClientes.setText("Manter Clientes");
-        btnManterClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnGerenciarClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnGerenciarClientes.setText("Gerenciar Clientes");
+        btnGerenciarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManterClientesActionPerformed(evt);
+                btnGerenciarClientesActionPerformed(evt);
             }
         });
 
-        btnManterProdutos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnManterProdutos.setText("Manter Produtos");
-        btnManterProdutos.addActionListener(new java.awt.event.ActionListener() {
+        btnGerenciarProdutos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnGerenciarProdutos.setText("Gerenciar Produtos");
+        btnGerenciarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManterProdutosActionPerformed(evt);
+                btnGerenciarProdutosActionPerformed(evt);
             }
         });
 
@@ -56,8 +56,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManterClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManterProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+                    .addComponent(btnGerenciarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGerenciarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
                 .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -73,9 +73,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(btnManterClientes)
+                .addComponent(btnGerenciarClientes)
                 .addGap(18, 18, 18)
-                .addComponent(btnManterProdutos)
+                .addComponent(btnGerenciarProdutos)
                 .addGap(61, 61, 61)
                 .addComponent(btnCreditos)
                 .addGap(25, 25, 25))
@@ -97,19 +97,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaCreditos.setVisible(true);
     }//GEN-LAST:event_btnCreditosActionPerformed
 
-    private void btnManterClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterClientesActionPerformed
-        TelaManterClientes telaManterClientes = new TelaManterClientes();
+    private void btnGerenciarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarClientesActionPerformed
+        TelaGerenciarClientes telaManterClientes = new TelaGerenciarClientes();
         telaManterClientes.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 
         telaManterClientes.setVisible(true);
-    }//GEN-LAST:event_btnManterClientesActionPerformed
+    }//GEN-LAST:event_btnGerenciarClientesActionPerformed
 
-    private void btnManterProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterProdutosActionPerformed
-        TelaManterProdutos telaManterProdutos = new TelaManterProdutos();
+    private void btnGerenciarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarProdutosActionPerformed
+        TelaGerenciarProdutos telaManterProdutos = new TelaGerenciarProdutos();
         telaManterProdutos.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 
         telaManterProdutos.setVisible(true);
-    }//GEN-LAST:event_btnManterProdutosActionPerformed
+    }//GEN-LAST:event_btnGerenciarProdutosActionPerformed
 
     public static void main(String args[]) {
 
@@ -142,8 +142,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreditos;
-    private javax.swing.JButton btnManterClientes;
-    private javax.swing.JButton btnManterProdutos;
+    private javax.swing.JButton btnGerenciarClientes;
+    private javax.swing.JButton btnGerenciarProdutos;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

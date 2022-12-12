@@ -1,10 +1,11 @@
-package BancoDeDados_01_Conexao;
+package BancoDeDados_02_Cadastro;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class BD {
+public class GerenciadorBD {
     
     private Connection conexao = null;
     
@@ -22,8 +23,6 @@ public class BD {
             String textoDeConexao = "jdbc:mysql://" + this.servidor + "/" + this.banco;
             
             conexao = DriverManager.getConnection(textoDeConexao, this.login, this.senha);
-            
-            System.out.println("Conectou.");
         }
         catch (SQLException ex) 
         {
@@ -42,7 +41,6 @@ public class BD {
         {
             if(conexao != null && !conexao.isClosed()) {
                 conexao.close();
-                System.out.println("Desconectou.");
             }
         } 
         catch (SQLException ex) 

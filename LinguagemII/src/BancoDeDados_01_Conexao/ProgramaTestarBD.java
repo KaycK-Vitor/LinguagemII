@@ -4,7 +4,7 @@ public class ProgramaTestarBD {
 
     public static void main(String[] args) {
         
-        BD bd = new BD();
+        GerenciadorBD bd = new GerenciadorBD();
         
         bd.Conectar();
         

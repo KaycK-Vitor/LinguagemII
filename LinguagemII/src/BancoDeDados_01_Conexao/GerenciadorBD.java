@@ -1,11 +1,10 @@
-package BancoDeDados_02_Cadastro;
-
+package BancoDeDados_01_Conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class BD {
+public class GerenciadorBD {
     
     private Connection conexao = null;
     

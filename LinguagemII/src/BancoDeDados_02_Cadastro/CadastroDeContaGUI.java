@@ -244,13 +244,13 @@ public class CadastroDeContaGUI extends javax.swing.JFrame {
             resultado.close();
 
             //Exibe mensagem de sucesso e Id gerado.
-            JOptionPane.showMessageDialog(this, "Conta adicionada com sucesso.\nId gerado: " + idGerado);
+            JOptionPane.showMessageDialog(this, "Conta cadastrada com sucesso.\nId gerado: " + idGerado);
         } 
         //Captura e trata uma exceção de SQL
         catch (SQLException ex) 
         {
             //Exibe mensagem de exceção
-            JOptionPane.showMessageDialog(this, "Nao conseguiu adicionar uma nova conta." + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Nao conseguiu cadastrar uma nova conta." + ex.getMessage());
         }
         //Executa independentemente de ocorrer exceção
         finally

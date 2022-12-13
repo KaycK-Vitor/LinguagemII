@@ -3,12 +3,13 @@ package BancoDeDados_02_Cadastro;
 
 //Importação de classes
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 //Criação de classe pública
-public class CadastroDeConta {
+public class CadastroDeConta_RetornaIdGerado {
 
     //Criação do método main
     public static void main(String[] args) {
@@ -43,9 +44,12 @@ public class CadastroDeConta {
         {
             //sql a ser executado no banco de dados
             String sql = "INSERT INTO conta (numero, saldo, limite) VALUES (?, ?, ?)";
+            
+            //Cria array que guarda as colunas a serem retornadas após insert
+            String colunasGeradas[] = { "id" };
 
             //cria o comando a ser executado no banco de dados
-            PreparedStatement comando = conexao.prepareStatement(sql);
+            PreparedStatement comando = conexao.prepareStatement(sql, colunasGeradas);
 
             //Combina os valores lidos do teclado com o sql acima
             comando.setInt(1, numero);
@@ -55,8 +59,21 @@ public class CadastroDeConta {
             //executa o comando no banco de dados
             comando.execute();
 
+            //resgata id gerado automaticamente, após a execução do insert
+            ResultSet resultado = comando.getGeneratedKeys();
+            
+            int idGerado = 0;
+
+            //lê id gerado automaticamente
+            if (resultado.next()) {
+                idGerado = resultado.getInt(1);
+            }
+            
+            //Fecha o objeto resultset (estrutura de tabela)
+            resultado.close();
+
             //Exibe mensagem de sucesso e Id gerado. 
-            System.out.println("Conta cadastrada com sucesso!");
+            System.out.println("Conta cadastrada com sucesso! \nId gerado: " + idGerado);
         } 
         //
         catch (SQLException ex) 

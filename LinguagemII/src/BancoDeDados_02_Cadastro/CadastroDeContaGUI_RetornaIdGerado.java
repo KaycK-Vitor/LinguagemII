@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
 
 
 //Criação de classe pública que herda da classe JFrame
-public class CadastroDeContaGUI extends javax.swing.JFrame {
+public class CadastroDeContaGUI_RetornaIdGerado extends javax.swing.JFrame {
 
     //Construtor da classe
-    public CadastroDeContaGUI() {
+    public CadastroDeContaGUI_RetornaIdGerado() {
         initComponents();
         
         //Abrir o formulário centralizado na horizontal e vertical
@@ -216,8 +216,11 @@ public class CadastroDeContaGUI extends javax.swing.JFrame {
             //sql a ser executado no banco de dados
             String sql = "INSERT INTO conta (numero, saldo, limite) VALUES (?, ?, ?)";
             
+            //Cria array que guarda as colunas a serem retornadas após insert
+            String colunasGeradas[] = { "id" };
+
             //cria o comando a ser executado no banco de dados
-            PreparedStatement comando = conexao.prepareStatement(sql);
+            PreparedStatement comando = conexao.prepareStatement(sql, colunasGeradas);
 
             //Combina os valores lidos do teclado com o sql acima
             comando.setInt(1, numero);
@@ -227,14 +230,27 @@ public class CadastroDeContaGUI extends javax.swing.JFrame {
             //executa o comando no banco de dados
             comando.execute();
 
+            //resgata id gerado automaticamente, após a execução do insert
+            ResultSet resultado = comando.getGeneratedKeys();
+            
+            int idGerado = 0;
+
+            //lê id gerado automaticamente
+            if (resultado.next()) {
+                idGerado = resultado.getInt(1);
+            }
+            
+            //Fecha o objeto resultset (estrutura de tabela)
+            resultado.close();
+
             //Exibe mensagem de sucesso e Id gerado.
-            JOptionPane.showMessageDialog(this, "Conta cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(this, "Conta cadastrada com sucesso.\nId gerado: " + idGerado);
         } 
         //Captura e trata uma exceção de SQL
         catch (SQLException ex) 
         {
             //Exibe mensagem de exceção
-            JOptionPane.showMessageDialog(this, "Nao conseguiu cadastrar uma nova conta! \nErro: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Nao conseguiu cadastrar uma nova conta." + ex.getMessage());
         }
         //Executa independentemente de ocorrer exceção
         finally
@@ -255,7 +271,7 @@ public class CadastroDeContaGUI extends javax.swing.JFrame {
         }
     }
     
-    private void PermitirDigitarSomenteNumerosEVirgula(java.awt.event.KeyEvent evt)
+        private void PermitirDigitarSomenteNumerosEVirgula(java.awt.event.KeyEvent evt)
     {
         char c = evt.getKeyChar();
         
@@ -282,21 +298,27 @@ public class CadastroDeContaGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeContaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDeContaGUI_RetornaIdGerado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeContaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDeContaGUI_RetornaIdGerado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeContaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDeContaGUI_RetornaIdGerado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeContaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroDeContaGUI_RetornaIdGerado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroDeContaGUI().setVisible(true);
+                new CadastroDeContaGUI_RetornaIdGerado().setVisible(true);
             }
         });
     }

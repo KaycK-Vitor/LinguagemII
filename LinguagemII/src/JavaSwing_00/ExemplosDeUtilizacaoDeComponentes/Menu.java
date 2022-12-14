@@ -4,7 +4,7 @@
  */
 package JavaSwing_00.ExemplosDeUtilizacaoDeComponentes;
 
-import JavaSwing_05.ExemplosCompletos.ManterUsuario.TelaGerenciarUsuario;
+import JavaSwing_05.ExemplosCompletos.GerenciarUsuario.TelaGerenciarUsuario;
 
 /**
  *

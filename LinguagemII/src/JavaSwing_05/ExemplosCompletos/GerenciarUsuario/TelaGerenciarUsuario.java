@@ -1,4 +1,4 @@
-package JavaSwing_05.ExemplosCompletos.ManterUsuario;
+package JavaSwing_05.ExemplosCompletos.GerenciarUsuario;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

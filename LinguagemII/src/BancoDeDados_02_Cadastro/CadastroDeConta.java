@@ -55,7 +55,7 @@ public class CadastroDeConta {
             //executa o comando no banco de dados
             comando.execute();
 
-            //Exibe mensagem de sucesso e Id gerado. 
+            //Exibe mensagem de sucesso. 
             System.out.println("Conta cadastrada com sucesso!");
         } 
         //

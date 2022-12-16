@@ -245,6 +245,8 @@ public class CadastroDeContaGUI_RetornaIdGerado extends javax.swing.JFrame {
 
             //Exibe mensagem de sucesso e Id gerado.
             JOptionPane.showMessageDialog(this, "Conta cadastrada com sucesso.\nId gerado: " + idGerado);
+            
+            LimparCampos();
         } 
         //Captura e trata uma exceção de SQL
         catch (SQLException ex) 
@@ -261,6 +263,14 @@ public class CadastroDeContaGUI_RetornaIdGerado extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    
+    private void LimparCampos()
+    {
+        txtNumero.setText("");
+        txtSaldo.setText("");
+        txtLimite.setText("");
+    }
+    
     private void PermitirDigitarSomenteNumeros(java.awt.event.KeyEvent evt)
     {
         char c = evt.getKeyChar();

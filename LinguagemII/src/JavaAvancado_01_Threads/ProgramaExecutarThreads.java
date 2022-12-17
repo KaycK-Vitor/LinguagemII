@@ -1,0 +1,17 @@
+package JavaAvancado_01_Threads;
+
+public class ProgramaExecutarThreads {
+
+    public static void main(String[] args) {
+        
+        Thread tarefaA = new TarefaA();
+        Thread tarefaB = new TarefaB();
+        Thread tarefaC = new TarefaC();
+        
+        tarefaA.start();
+        tarefaB.start();
+        tarefaC.start();
+        
+        
+    } 
+}

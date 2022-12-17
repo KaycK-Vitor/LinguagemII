@@ -6,12 +6,11 @@ public class ProgramaExecutarThreads {
         
         Thread tarefaA = new TarefaA();
         Thread tarefaB = new TarefaB();
-        Thread tarefaC = new TarefaC();
+        Thread tarefaC = new Thread(new TarefaC());
         
         tarefaA.start();
         tarefaB.start();
         tarefaC.start();
-        
         
     } 
 }

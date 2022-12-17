@@ -6,10 +6,10 @@ public class TarefaA extends Thread{
     {
         while(true){
             
-            System.out.println(" ---------- AAAAAAAAAA => Heranca");
+            System.out.println(" ---------- AAAAAAAAAA   =>   Heranca");
             
             try{
-                Thread.sleep(500);
+                Thread.sleep(550);
             }
             catch(Exception ex)
             {

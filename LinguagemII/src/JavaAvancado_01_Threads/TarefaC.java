@@ -6,10 +6,10 @@ public class TarefaC implements Runnable {
     {
         while(true){
             
-            System.out.println("----- CCCCCCCCCC ----- => Implementacao");
+            System.out.println("----- CCCCCCCCCC -----   =>   Implementacao");
             
             try{
-                Thread.sleep(500);
+                Thread.sleep(550);
             }
             catch(Exception ex)
             {

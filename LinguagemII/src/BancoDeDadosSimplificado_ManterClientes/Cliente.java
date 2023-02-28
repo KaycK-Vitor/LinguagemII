@@ -1,4 +1,4 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ public class Cliente {
         this.bd = new GerenciadorBD();
     }
 
-    public void cadastrar(String nome, String email, String telefone) {
+    public void cadastrar(String nome, String email, String telefone) throws SQLException{
         try {
             // Cria a conexão com o banco de dados
             Connection conn = bd.conectar();
@@ -32,8 +32,6 @@ public class Cliente {
             // Executa a instrução SQL
             stmt.executeUpdate();
 
-        } catch (SQLException e) {
-            System.out.println("Erro ao cadastrar cliente: " + e.getMessage());
         } finally {
             // Fecha a conexão com o banco de dados
             bd.desconectar();
@@ -41,7 +39,7 @@ public class Cliente {
 
     }
 
-    public void listar() {
+    public void listar() throws SQLException{
         try {
             // Cria a conexão com o banco de dados
             Connection conn = bd.conectar();
@@ -62,9 +60,6 @@ public class Cliente {
                 System.out.println();
             }
 
-        } catch (SQLException e) {
-            System.out.println("Erro ao listar clientes: " + e.getMessage());
-
         } finally {
             // Fecha a conexão com o banco de dados
             bd.desconectar();
@@ -72,7 +67,7 @@ public class Cliente {
 
     }
     
-    public void listar(DefaultTableModel tabelaClientes) {
+    public void listar(DefaultTableModel tabelaClientes) throws SQLException{
         try {
             // Cria a conexão com o banco de dados
             Connection conn = bd.conectar();
@@ -100,9 +95,6 @@ public class Cliente {
                 tabelaClientes.addRow(Conta);
             }
 
-        } catch (SQLException e) {
-            System.out.println("Erro ao listar clientes: " + e.getMessage());
-
         } finally {
             // Fecha a conexão com o banco de dados
             bd.desconectar();
@@ -110,7 +102,7 @@ public class Cliente {
 
     }
     
-    public void atualizar(int id, String nome, String email, String telefone) {
+    public void atualizar(int id, String nome, String email, String telefone) throws SQLException{
         try {
             // Cria a conexão com o banco de dados
             Connection conn = bd.conectar();
@@ -128,15 +120,13 @@ public class Cliente {
             // Executa a instrução SQL
             stmt.executeUpdate();
 
-        } catch (SQLException e) {
-            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
         } finally {
             // Fecha a conexão com o banco de dados
             bd.desconectar();
         }
     }
 
-    public void excluir(int id) {
+    public void excluir(int id) throws SQLException{
         try {
             // Cria a conexão com o banco de dados
             Connection conn = bd.conectar();
@@ -151,8 +141,6 @@ public class Cliente {
             // Executa a instrução SQL
             stmt.executeUpdate();
 
-        } catch (SQLException e) {
-            System.out.println("Erro ao excluir cliente: " + e.getMessage());
         } finally {
             // Fecha a conexão com o banco de dados
             bd.desconectar();

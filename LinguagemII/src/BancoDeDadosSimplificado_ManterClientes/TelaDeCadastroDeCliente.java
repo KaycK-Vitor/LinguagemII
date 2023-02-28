@@ -1,4 +1,4 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
 import java.util.Scanner;
 
@@ -24,12 +24,21 @@ public class TelaDeCadastroDeCliente {
 
         // Cria um objeto da classe Cliente
         Cliente cliente = new Cliente();
-
+        
+        try{
+        
         // Chama o método cadastrar, passando os dados lidos do teclado como parâmetro
         cliente.cadastrar(nome, email, telefone);
         
         //Mensagem de confirmação
         System.out.println("\nCadastro realizado com sucesso!");
+        
+        }
+        catch(Exception e)
+        {
+            //Mensagem de Erro
+            System.out.println("\nErro ao tentar cadastrar um cliente!");
+        }
 
     }
 }

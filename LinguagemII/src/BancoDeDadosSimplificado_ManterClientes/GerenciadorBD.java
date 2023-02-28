@@ -1,4 +1,4 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

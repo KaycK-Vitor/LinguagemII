@@ -1,4 +1,4 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -156,10 +156,10 @@ public class TelaDeCadastroDeClienteGUI extends javax.swing.JFrame {
             //Mensagem de confirmação
             JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
         } 
-        catch (Exception ex) 
+        catch (Exception e) 
         {
-            //Exibe mensagem de exceção
-            JOptionPane.showMessageDialog(this, "Nao conseguiu cadastrar um novo cliente!");
+            //Mensagem de erro
+            JOptionPane.showMessageDialog(this, "Erro ao tentar cadastrar um novo cliente!");
         }
 
         //Limpa campos do formulário

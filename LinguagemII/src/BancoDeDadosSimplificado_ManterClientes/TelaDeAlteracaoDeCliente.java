@@ -1,4 +1,4 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
 import java.util.Scanner;
 
@@ -25,9 +25,22 @@ public class TelaDeAlteracaoDeCliente {
 
         // Cria um objeto Cliente e chama o método atualizar, passando as informações informadas pelo usuário
         Cliente cliente = new Cliente();
+        
+        try{
+        
         cliente.atualizar(id, nome, email, telefone);
-
+        
+        //Mensagem de confirmação
         System.out.println("\nCliente alterado com sucesso!");
+        
+        }
+        catch(Exception e)
+        {
+            //Mensagem de Erro
+            System.out.println("\nErro ao tentar alterar um cliente!");
+        }
+
+        
     }
 }
 

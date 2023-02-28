@@ -1,5 +1,6 @@
-package BancoDeDadosSimplificado_01_Cadastro;
+package BancoDeDadosSimplificado_ManterClientes;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaDeListagemDeClientesGUI extends javax.swing.JFrame {
@@ -20,8 +21,18 @@ public class TelaDeListagemDeClientesGUI extends javax.swing.JFrame {
 
         Cliente cliente = new Cliente();
 
+        try{
+        
         // Lista os clientes cadastrados no banco de dados
         cliente.listar(tabelaClientes);
+        
+        }
+        catch(Exception e)
+        {
+            //Mensagem de Erro
+            JOptionPane.showMessageDialog(this, "Erro ao tentar listar clientes!");
+        }
+        
     }
 
     /**

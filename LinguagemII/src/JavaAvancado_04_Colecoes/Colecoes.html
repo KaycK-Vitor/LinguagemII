@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Aula de Java - Collections</title>
+</head>
+<body>
+	<h1>Collections em Java</h1>
+	<p>As collections são uma parte importante da biblioteca padrão do Java e permitem trabalhar com conjuntos de elementos de forma eficiente e fácil.</p>
+
+	<h2>Listas</h2>
+	<p>Uma lista em Java é uma coleção ordenada de elementos. Para criar uma lista, você pode usar a classe ArrayList:</p>
+	<pre>
+		List&lt;String&gt; minhaLista = new ArrayList&lt;&gt;();
+		minhaLista.add("elemento 1");
+		minhaLista.add("elemento 2");
+		minhaLista.add("elemento 3");
+	</pre>
+
+	<p>Este código cria uma lista de strings e adiciona três elementos à lista. Para acessar um elemento da lista, você pode usar o método get():</p>
+	<pre>
+		String elemento2 = minhaLista.get(1);
+		System.out.println(elemento2);
+	</pre>
+
+	<p>Este código retorna o segundo elemento da lista ("elemento 2") e o imprime na saída padrão.</p>
+
+	<h2>Conjuntos</h2>
+	<p>Um conjunto em Java é uma coleção não ordenada de elementos únicos. Para criar um conjunto, você pode usar a classe HashSet:</p>
+	<pre>
+		Set&lt;String&gt; meuSet = new HashSet&lt;&gt;();
+		meuSet.add("elemento 1");
+		meuSet.add("elemento 2");
+		meuSet.add("elemento 3");
+	</pre>
+
+	<p>Este código cria um conjunto de strings e adiciona três elementos ao conjunto. Como o conjunto não é ordenado, você não pode acessar elementos do conjunto pelo índice. Para verificar se um elemento está presente no conjunto, você pode usar o método contains():</p>
+	<pre>
+		boolean contemElemento2 = meuSet.contains("elemento 2");
+		System.out.println(contemElemento2);
+	</pre>
+
+	<p>Este código verifica se o conjunto contém o elemento "elemento 2" e imprime o resultado na saída padrão.</p>
+
+	<h2>Mapas</h2>
+	<p>Um mapa em Java é uma coleção de pares chave/valor. Para criar um mapa, você pode usar a classe HashMap:</p>
+	<pre>
+		Map&lt;String, Integer&gt; meuMap = new HashMap&lt;&gt;();
+		meuMap.put("chave 1", 10);
+		meuMap.put("chave 2", 20);
+		meuMap.put("chave 3", 30);
+	</pre>
+
+	<p>Agora, o mapa contém três pares de chave/valor. Para acessar o valor associado a uma chave, use o método get():</p>
+	<pre>
+		int valorChave2 = meuMap.get("chave 2");
+	</pre>
+
+	<p>Este código retorna o valor associado à chave "chave 2".</p>
+
+	<h2>Iterando sobre uma coleção</h2>
+	<p>Uma das tarefas mais comuns ao trabalhar com coleções é iterar sobre seus elementos. Em Java, você pode iterar sobre uma coleção usando um loop for-each ou um iterator.</p>
+
+	<h3>Loop for-each</h3>
+	<p>O loop for-each é uma maneira conveniente de iterar sobre os elementos de uma coleção:</p>
+	<pre>
+		for (String elemento : minhaLista) {
+			System.out.println(elemento);
+		}
+	</pre>
+
+	<p>Este código itera sobre todos os elementos da lista e os imprime na saída padrão.</p>
+
+	<h3>Iterator</h3>
+	<p>Outra maneira de iterar sobre uma coleção é usar um iterator:</p>
+	<pre>
+		Iterator&lt;String&gt; iterador = minhaLista.iterator();
+		while (iterador.hasNext()) {
+			String elemento = iterador.next();
+			System.out.println(elemento);
+		}
+	</pre>
+
+	<p>Este código também itera sobre todos os elementos da lista e os imprime na saída padrão.</p>
+
+	<h2>Conclusão</h2>
+	<p>As collections são uma parte essencial do Java e oferecem maneiras convenientes de trabalhar com conjuntos de elementos. Existem vários tipos de coleções, incluindo listas, conjuntos e mapas, e várias maneiras de iterar sobre eles. É importante estar familiarizado com as collections em Java para aproveitar ao máximo a linguagem.</p>
+</body>
+</html>
+
+
+
+

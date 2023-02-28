@@ -25,14 +25,10 @@ public class GerenciadorBD {
             
             System.out.println("Conectou.");
         }
-        catch (SQLException ex) 
+        catch (SQLException | ClassNotFoundException ex) 
         {
             System.out.println("Erro: Nao conseguiu conectar no BD.");
         } 
-        catch (ClassNotFoundException ex) 
-        {
-            System.out.println("Erro: Nao encontrou o driver do BD.");
-        }
         
         return conexao;
     }

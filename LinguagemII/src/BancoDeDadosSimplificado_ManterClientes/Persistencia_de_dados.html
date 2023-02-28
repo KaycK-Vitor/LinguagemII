@@ -1,0 +1,149 @@
+<html>
+<head>
+  <title>Aula sobre Persistência de Dados em Java: JDBC com NetBeans</title>
+</head>
+<body>
+<h1>Aula sobre Persistência de Dados em Java: JDBC com NetBeans</h1>
+<p>Nesta aula, vamos aprender a como realizar a persistência de dados em um banco de dados utilizando a tecnologia JDBC (Java Database Connectivity) em conjunto com a IDE NetBeans.</p>
+<h2>Configuração do ambiente</h2>
+<p>Antes de começarmos a desenvolver, precisamos configurar nosso ambiente. Para utilizar o JDBC com o NetBeans, é necessário realizar os seguintes passos:</p>
+<ol>
+  <li>Baixar o driver JDBC do banco de dados que você pretende utilizar (por exemplo, MySQL, Oracle, PostgreSQL, etc.).</li>
+  <li>Adicionar o driver ao projeto no NetBeans: clique com o botão direito do mouse sobre o projeto no NetBeans e selecione a opção "Properties". Na janela que abrir, selecione "Libraries" e clique em "Add JAR/Folder". Selecione o arquivo do driver JDBC que você baixou na etapa anterior e clique em "Open".</li>
+</ol>
+<p>Com isso, nosso ambiente já está pronto para começarmos a desenvolver.</p>
+<h2>Script SQL dos Exemplos de CRUD</h2>
+<pre><code>CREATE DATABASE livraria;
+
+USE livraria;
+
+CREATE TABLE clientes (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id)
+);
+</code></pre>
+
+<h2>Exemplos de CRUD</h2>
+
+<p>Agora, vamos ver alguns exemplos de como realizar as operações de CRUD (Create, Read, Update, Delete) utilizando o JDBC no NetBeans.</p>
+<h3>Criação de um novo registro</h3>
+<p>Para criar um novo registro no banco de dados, precisamos executar uma instrução SQL INSERT. Vamos ver um exemplo de como fazer isso no NetBeans:</p>
+<ol>
+  <li>Crie um novo projeto no NetBeans e adicione uma classe chamada "Cliente".</li>
+  <li>Dentro da classe, crie um método "cadastrar" que irá receber os dados do cliente a ser cadastrado (nome, email e telefone) e irá inserir esses dados no banco de dados. O método deve ter o seguinte código:</li>
+</ol>
+<pre><code>public void cadastrar(String nome, String email, String telefone) {
+    try {
+        // Cria a conexão com o banco de dados
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meubanco", "seu_usuario", "sua_senha");
+
+        // Prepara a instrução SQL
+        String sql = "INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        // Define os parâmetros da instrução SQL
+        stmt.setString(1, nome);
+        stmt.setString(2, email);
+        stmt.setString(3, telefone);
+
+        // Executa a instrução SQL
+        stmt.executeUpdate();
+
+        // Fecha a conexão com o banco de dados
+        conn.close();
+    } catch (SQLException e) {
+        System.out.println("Erro ao cadastrar cliente: " + e.getMessage());
+    }
+}</code></pre>
+
+<h3>Leitura de registros</h3>
+<p>Para ler os registros do banco de dados, precisamos executar uma instrução SQL SELECT. Vamos ver um exemplo de como fazer isso no NetBeans:</p>
+<p>Crie um novo método na classe "Cliente" chamado "listar" que irá recuperar todos os registros da tabela "clientes" do banco de dados e exibir esses dados no console. O método deve ter o seguinte código:</p>
+<pre><code>public void listar() {
+    try {
+        // Cria a conexão com o banco de dados
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meubanco", "seu_usuario", "sua_senha");
+
+        // Prepara a instrução SQL
+        String sql = "SELECT * FROM clientes";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        // Executa a instrução SQL
+        ResultSet rs = stmt.executeQuery();
+
+        // Percorre os registros e exibe os dados no console
+        while (rs.next()) {
+            System.out.println("ID: " + rs.getInt("id"));
+            System.out.println("Nome: " + rs.getString("nome"));
+            System.out.println("Email: " + rs.getString("email"));
+            System.out.println("Telefone: " + rs.getString("telefone"));
+        }
+
+        // Fecha a conexão com o banco de dados
+        conn.close();
+    } catch (SQLException e) {
+        System.out.println("Erro ao listar clientes: " + e.getMessage());
+    }
+}</code></pre>
+<h3>Atualização de registros</h3>
+<p>Para atualizar um registro no banco de dados, precisamos executar uma instrução SQL UPDATE. Vamos ver um exemplo de como fazer isso no NetBeans:</p>
+<p>Crie um novo método na classe "Cliente" chamado "atualizar" que irá receber o ID do cliente a ser atualizado e os novos dados (nome, email e telefone) e irá atualizar esses dados no banco de dados. O método deve ter o seguinte código:</p>
+<pre><code>public void atualizar(int id, String nome, String email, String telefone) {
+    try {
+        // Cria a conexão com o banco de dados
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meubanco", "seu_usuario", "sua_senha");
+
+        // Prepara a instrução SQL
+        String sql = "UPDATE clientes SET nome = ?, email = ?, telefone = ? WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        // Define os parâmetros da instrução SQL
+        stmt.setString(1, nome);
+        stmt.setString(2, email);
+        stmt.setString(3, telefone);
+        stmt.setInt(4, id);
+
+        // Executa a instrução SQL
+        stmt.executeUpdate();
+
+        // Fecha a conexão com o banco de dados
+        conn.close();
+    } catch (SQLException e) {
+        System.out.println("Erro ao atualizar cliente: " + e.getMessage());
+    }
+}</code></pre>
+
+<h3>Exclusão de registros</h3>
+<p>Para excluir um registro do banco de dados, precisamos executar uma instrução SQL DELETE. Vamos ver um exemplo de como fazer isso no NetBeans:</p>
+<p>Crie um novo método na classe "Cliente" chamado "excluir" que irá receber o ID do cliente a ser excluído e irá remover esse registro do banco de dados. O método deve ter o seguinte código:</p>
+<pre><code>public void excluirCliente(int id) {
+    try {
+        // Cria a conexão com o banco de dados
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meubanco", "seu_usuario", "sua_senha");
+
+        // Prepara a instrução SQL
+        String sql = "DELETE FROM clientes WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        // Define os parâmetros da instrução SQL
+        stmt.setInt(1, id);
+
+        // Executa a instrução SQL
+        stmt.executeUpdate();
+
+        // Fecha a conexão com o banco de dados
+        conn.close();
+
+    } catch (SQLException e) {
+        System.out.println("Erro ao excluir cliente: " + e.getMessage());
+    }
+}</code></pre>
+<p>Em resumo, aprendemos nesta aula como realizar a persistência de dados em um banco de dados utilizando a tecnologia JDBC em conjunto com a IDE NetBeans. Vimos como configurar o ambiente, incluindo o driver JDBC do banco de dados, como criar uma conexão com o banco de dados e exemplos práticos de como realizar as operações de CRUD (Create, Read, Update, Delete) utilizando o JDBC no NetBeans.</p>
+
+</body>
+</html>
+
+

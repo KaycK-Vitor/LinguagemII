@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JNDI (Java Naming and Directory Interface)</title>
+</head>
+<body>
+      <h1>Usando JNDI para obter conexões de banco de dados em Java</h1>
+	<p>JNDI (Java Naming and Directory Interface) é um API (Application Programming Interface) fornecido pela plataforma Java que permite que aplicativos Java localizem e usem serviços e recursos fornecidos por contêineres e servidores de aplicativos Java EE (Java Enterprise Edition).</p>
+	<p>O JNDI é usado para associar nomes a objetos em um diretório de nomes, permitindo que os aplicativos Java obtenham uma referência a um objeto (como um recurso, um banco de dados, uma conexão de rede etc.) por meio de seu nome, em vez de ter que saber detalhes específicos sobre sua localização ou implementação.</p>
+	<p>O JNDI é particularmente útil para aplicativos Java que precisam se conectar a recursos em tempo de execução, pois permite que esses recursos sejam configurados e gerenciados externamente ao aplicativo. Isso ajuda a aumentar a flexibilidade e a modularidade dos aplicativos Java e simplifica a manutenção e o gerenciamento de recursos compartilhados entre vários aplicativos.</p>
+	<p>A tecnologia mais atual do Java que pode ser considerada equivalente ao JNDI é o JNDI versão 1.2, que faz parte do Java EE 8 (Java Enterprise Edition).</p>
+	<p>O JNDI ainda é amplamente usado em aplicativos Java para localizar recursos em contêineres e servidores de aplicativos Java EE, mas também foi atualizado e aprimorado ao longo do tempo. A versão mais recente do JNDI (1.2) inclui recursos adicionais, como suporte para referências remotas e um modelo de programação mais fácil de usar para a integração de aplicativos.</p>
+	<p>Além disso, o Java EE 8 também inclui outras tecnologias relacionadas ao gerenciamento de recursos e serviços, como o CDI (Contexts and Dependency Injection), o JPA (Java Persistence API) e o JMS (Java Message Service), que também são amplamente utilizados em aplicativos Java modernos.</p>
+	<p>Aqui está um exemplo básico e completo de como usar o JNDI em Java:</p>
+	<p>Suponha que você tenha um aplicativo Java que precisa de uma conexão com um banco de dados. Em vez de criar uma nova conexão toda vez que o aplicativo é executado, você pode usar o JNDI para criar uma conexão reutilizável a partir de um pool de conexões gerenciado pelo servidor de aplicativos.</p>
+	<p>Primeiro, você precisará criar um arquivo de configuração JNDI que defina a conexão com o banco de dados. O arquivo de configuração deve estar no formato XML e ser chamado de "context.xml". Aqui está um exemplo de como o arquivo de configuração pode ser definido:</p>
+	<pre>
+		<code>
+			&lt;Context&gt;
+			  &lt;Resource name="jdbc/mydb" auth="Container" type="javax.sql.DataSource"
+			            maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+			            username="myusername" password="mypassword"
+			            driverClassName="com.mysql.jdbc.Driver"
+			            url="jdbc:mysql://localhost:3306/mydb"/&gt;
+			&lt;/Context&gt;
+		</code>
+	</pre>
+
+<p>Este arquivo define um recurso JNDI chamado "jdbc/mydb" que representa uma conexão com o banco de dados MySQL "mydb". Observe que o arquivo define vários atributos para a conexão, incluindo nome de usuário, senha, URL do banco de dados e outras propriedades. O atributo "type" especifica o tipo de recurso, neste caso um "javax.sql.DataSource" que representa um pool de conexões JDBC.</p>
+<p>Em seguida, no código do seu aplicativo Java, você pode recuperar uma referência ao recurso JNDI usando a classe "InitialContext". Aqui está um exemplo de como recuperar a conexão do pool de conexões:</p>
+<pre><code>import java.sql.Connection;
+import java.sql.SQLException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+public class JNDIExample {
+  public static void main(String[] args) {
+    try {
+      Context context = new InitialContext();
+      DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mydb");
+      Connection connection = dataSource.getConnection();
+      // use the connection...
+      connection.close();
+    } catch (NamingException | SQLException e) {
+      e.printStackTrace();
+    }
+  }
+}</code></pre>
+<p>Este exemplo cria uma instância da classe "InitialContext" e usa o método "lookup" para procurar o recurso JNDI com o nome "java:comp/env/jdbc/mydb" (que corresponde ao nome definido no arquivo de configuração). A referência JNDI é então convertida em um objeto "DataSource" e, em seguida, é usada para obter uma conexão do pool de conexões. A conexão pode ser usada normalmente e, em seguida, é fechada quando não é mais necessária.</p>
+<p>Espero que isso ajude a ilustrar como o JNDI pode ser usado em Java para obter recursos e serviços a partir de um servidor de aplicativos.</p>
+
+</body>
+</html>

@@ -17,9 +17,10 @@ public class ClienteDAO {
     }
 
     public void cadastrar(Cliente cliente) throws SQLException {
-        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
-                "INSERT INTO cliente (nome, email, telefone) VALUES (?, ?, ?)")) {
-            
+        try (Connection conn = bd.conectar(); 
+             PreparedStatement stmt = conn.prepareStatement(
+             "INSERT INTO cliente (nome, email, telefone) VALUES (?, ?, ?)")) 
+        {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
             stmt.setLong(3, cliente.getTelefone());
@@ -32,9 +33,11 @@ public class ClienteDAO {
         
         List<Cliente> listaDeClientes = new ArrayList<>();
         
-        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
-                "SELECT ID, Nome, Email, Telefone FROM cliente"); ResultSet rs = stmt.executeQuery()) {
-            
+        try (Connection conn = bd.conectar(); 
+             PreparedStatement stmt = conn.prepareStatement(
+             "SELECT ID, Nome, Email, Telefone FROM cliente"); 
+             ResultSet rs = stmt.executeQuery()) 
+        {
             while (rs.next()) {
                 Cliente cliente = new Cliente();
                 
@@ -45,15 +48,16 @@ public class ClienteDAO {
                 
                 listaDeClientes.add(cliente);
             }
-            
         }
+        
         return listaDeClientes;
     }
 
     public void atualizar(Cliente cliente) throws SQLException {
-        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
-                "UPDATE cliente SET nome = ?, email = ?, telefone = ? WHERE id = ?")) {
-            
+        try (Connection conn = bd.conectar(); 
+             PreparedStatement stmt = conn.prepareStatement(
+             "UPDATE cliente SET nome = ?, email = ?, telefone = ? WHERE id = ?")) 
+        {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
             stmt.setLong(3, cliente.getTelefone());
@@ -64,9 +68,10 @@ public class ClienteDAO {
     }
 
     public void excluir(Cliente cliente) throws SQLException {
-        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
-                "DELETE FROM cliente WHERE id = ?")) {
-            
+        try (Connection conn = bd.conectar(); 
+             PreparedStatement stmt = conn.prepareStatement(
+             "DELETE FROM cliente WHERE id = ?")) 
+        {
             stmt.setInt(1, cliente.getId());
             
             stmt.executeUpdate();

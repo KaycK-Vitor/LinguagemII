@@ -1,7 +1,7 @@
 package VIEW;
 
 import DAO.ClienteDAO;
-import DTO.ClienteDTO;
+import DTO.Cliente;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,18 +20,18 @@ public class TelaDeListagemDeClientesGUI extends javax.swing.JFrame {
 
     private void CarregarTabelaContas() {
         try {
-            List<ClienteDTO> listaDeClientes = new ClienteDAO().listar();
+            List<Cliente> listaDeClientes = new ClienteDAO().listar();
             
             DefaultTableModel tabelaClientes = (DefaultTableModel) tblClientes.getModel();
 
-            for (ClienteDTO clienteDTO : listaDeClientes) {
+            for (Cliente cliente : listaDeClientes) {
                 
                 Object[] c = new Object[]{
                     
-                    clienteDTO.getId(),
-                    clienteDTO.getNome(),
-                    clienteDTO.getEmail(),
-                    clienteDTO.getTelefone()
+                    cliente.getId(),
+                    cliente.getNome(),
+                    cliente.getEmail(),
+                    cliente.getTelefone()
                 };
                 
                 tabelaClientes.addRow(c);

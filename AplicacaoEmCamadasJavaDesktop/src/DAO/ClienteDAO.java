@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import DTO.ClienteDTO;
+import DTO.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ClienteDAO {
         bd = new GerenciadorBD();
     }
 
-    public void cadastrar(ClienteDTO cliente) throws SQLException {
+    public void cadastrar(Cliente cliente) throws SQLException {
         try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
                 "INSERT INTO cliente (nome, email, telefone) VALUES (?, ?, ?)")) {
             
@@ -28,15 +28,15 @@ public class ClienteDAO {
         }
     }
 
-    public List<ClienteDTO> listar() throws SQLException {
+    public List<Cliente> listar() throws SQLException {
         
-        List<ClienteDTO> listaDeClientes = new ArrayList<>();
+        List<Cliente> listaDeClientes = new ArrayList<>();
         
         try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT ID, Nome, Email, Telefone FROM cliente"); ResultSet rs = stmt.executeQuery()) {
             
             while (rs.next()) {
-                ClienteDTO c = new ClienteDTO();
+                Cliente c = new Cliente();
                 
                 c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
@@ -50,7 +50,7 @@ public class ClienteDAO {
         return listaDeClientes;
     }
 
-    public void atualizar(ClienteDTO cliente) throws SQLException {
+    public void atualizar(Cliente cliente) throws SQLException {
         try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
                 "UPDATE cliente SET nome = ?, email = ?, telefone = ? WHERE id = ?")) {
             
@@ -63,7 +63,7 @@ public class ClienteDAO {
         }
     }
 
-    public void excluir(ClienteDTO cliente) throws SQLException {
+    public void excluir(Cliente cliente) throws SQLException {
         try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
                 "DELETE FROM cliente WHERE id = ?")) {
             

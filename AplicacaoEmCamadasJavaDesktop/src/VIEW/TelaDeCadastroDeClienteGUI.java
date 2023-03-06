@@ -1,7 +1,7 @@
 package VIEW;
 
 import javax.swing.JOptionPane;
-import DTO.ClienteDTO;
+import DTO.Cliente;
 import DAO.ClienteDAO;
 
 public class TelaDeCadastroDeClienteGUI extends javax.swing.JFrame {
@@ -137,15 +137,15 @@ public class TelaDeCadastroDeClienteGUI extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
-            ClienteDTO clienteDTO = new ClienteDTO();
+            Cliente cliente = new Cliente();
 
-            clienteDTO.setNome(txtNome.getText());
-            clienteDTO.setEmail(txtEmail.getText());
-            clienteDTO.setTelefone(Long.parseLong(txtTelefone.getText()));
+            cliente.setNome(txtNome.getText());
+            cliente.setEmail(txtEmail.getText());
+            cliente.setTelefone(Long.parseLong(txtTelefone.getText()));
 
             ClienteDAO clienteDAO = new ClienteDAO();
 
-            clienteDAO.cadastrar(clienteDTO);
+            clienteDAO.cadastrar(cliente);
 
             JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
         } catch (Exception e) {

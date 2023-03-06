@@ -1,6 +1,6 @@
 package DTO;
 
-public class ClienteDTO {
+public class Cliente {
     
     private int id;
     private String nome;

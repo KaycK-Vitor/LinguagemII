@@ -136,45 +136,22 @@ public class TelaDeCadastroDeClienteGUI extends javax.swing.JFrame {
     }
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-
-        //Lê o número digitado no campo de texto e armazena em uma variável (String)
-        String nome = txtNome.getText();
-
-        //Lê o saldo digitado no campo de texto e armazena em uma variável (String)
-        String email = txtEmail.getText();
-
-        //Lê o limite digitado no campo de texto e armazena em uma variável (String)
-        String strTelefone = txtTelefone.getText();
-        
-        //Convertendo o valor de uma variável do tipo String para int
-        long telefone = Long.parseLong(strTelefone);
-
-        // Cria um objeto da classe Cliente
-        Cliente cliente = new Cliente();
-        
-        //Preenche esse objeto com informações vindas da tela
-        cliente.setNome(nome);
-        cliente.setEmail(email);
-        cliente.setTelefone(telefone);
-        
-
         try {
-            
+            Cliente cliente = new Cliente();
+
+            cliente.setNome(txtNome.getText());
+            cliente.setEmail(txtEmail.getText());
+            cliente.setTelefone(Long.parseLong(txtTelefone.getText()));
+
             ClienteDAO clienteDAO = new ClienteDAO();
 
-            // Chama o método cadastrar, passando os dados lidos do teclado como parâmetro
             clienteDAO.cadastrar(cliente);
 
-            //Mensagem de confirmação
             JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
-        } 
-        catch (Exception e) 
-        {
-            //Mensagem de erro
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao tentar cadastrar um novo cliente!");
         }
 
-        //Limpa campos do formulário
         LimparCampos();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

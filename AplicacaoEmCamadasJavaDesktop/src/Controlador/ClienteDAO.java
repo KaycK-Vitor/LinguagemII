@@ -10,54 +10,31 @@ import java.util.List;
 
 public class ClienteDAO {
 
-    //Cria um objeto gerenciador de conexao com o banco de dados
-    private GerenciadorBD bd = null;
+    private GerenciadorBD bd;
 
     public ClienteDAO() {
-        this.bd = new GerenciadorBD();
+        bd = new GerenciadorBD();
     }
 
-    public void cadastrar(Cliente cliente) throws SQLException{
-        try {
-            // Cria a conexão com o banco de dados
-            Connection conn = bd.conectar();
-
-            // Prepara a instrução SQL
-            String sql = "INSERT INTO cliente (nome, email, telefone) VALUES (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            // Define os parâmetros da instrução SQL
+    public void cadastrar(Cliente cliente) throws SQLException {
+        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
+                "INSERT INTO cliente (nome, email, telefone) VALUES (?, ?, ?)")) {
+            
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
             stmt.setLong(3, cliente.getTelefone());
-
-            // Executa a instrução SQL
+            
             stmt.executeUpdate();
-
-        } finally {
-            // Fecha a conexão com o banco de dados
-            bd.desconectar();
         }
     }
 
-    public List<Cliente> listar() throws SQLException{
+    public List<Cliente> listar() throws SQLException {
         
-        try {
+        List<Cliente> listaDeClientes = new ArrayList<>();
+        
+        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
+                "SELECT ID, Nome, Email, Telefone FROM cliente"); ResultSet rs = stmt.executeQuery()) {
             
-            //Criando uma lista de clientes
-             List<Cliente> listaDeClientes = new ArrayList<>();
-            
-            // Cria a conexão com o banco de dados
-            Connection conn = bd.conectar();
-
-            // Prepara a instrução SQL
-            String sql = "SELECT ID, Nome, Email, Telefone FROM cliente";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            // Executa a instrução SQL
-            ResultSet rs = stmt.executeQuery();
-
-            // Percorre os registros e exibe os dados no console
             while (rs.next()) {
                 Cliente c = new Cliente();
                 
@@ -69,59 +46,31 @@ public class ClienteDAO {
                 listaDeClientes.add(c);
             }
             
-            return listaDeClientes;
-
-        } finally {
-            // Fecha a conexão com o banco de dados
-            bd.desconectar();
         }
-
+        return listaDeClientes;
     }
-    
-    public void atualizar(Cliente cliente) throws SQLException{
-        try {
-            // Cria a conexão com o banco de dados
-            Connection conn = bd.conectar();
 
-            // Prepara a instrução SQL
-            String sql = "UPDATE cliente SET nome = ?, email = ?, telefone = ? WHERE id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            // Define os parâmetros da instrução SQL
+    public void atualizar(Cliente cliente) throws SQLException {
+        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
+                "UPDATE cliente SET nome = ?, email = ?, telefone = ? WHERE id = ?")) {
+            
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
             stmt.setLong(3, cliente.getTelefone());
             stmt.setInt(4, cliente.getId());
-
-            // Executa a instrução SQL
+            
             stmt.executeUpdate();
-
-        } finally {
-            // Fecha a conexão com o banco de dados
-            bd.desconectar();
         }
     }
 
-    public void excluir(Cliente cliente) throws SQLException{
-        try {
-            // Cria a conexão com o banco de dados
-            Connection conn = bd.conectar();
-
-            // Prepara a instrução SQL
-            String sql = "DELETE FROM cliente WHERE id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-            // Define os parâmetros da instrução SQL
+    public void excluir(Cliente cliente) throws SQLException {
+        try (Connection conn = bd.conectar(); PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM cliente WHERE id = ?")) {
+            
             stmt.setInt(1, cliente.getId());
-
-            // Executa a instrução SQL
+            
             stmt.executeUpdate();
-
-        } finally {
-            // Fecha a conexão com o banco de dados
-            bd.desconectar();
         }
     }
 
 }
-

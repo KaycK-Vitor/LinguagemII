@@ -1,8 +1,8 @@
-package Visao;
+package VIEW;
 
 import javax.swing.JOptionPane;
-import Modelo.Cliente;
-import Controlador.ClienteDAO;
+import DTO.Cliente;
+import DAO.ClienteDAO;
 
 public class TelaDeCadastroDeClienteGUI extends javax.swing.JFrame {
 

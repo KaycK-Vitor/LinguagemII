@@ -1,10 +1,10 @@
-package Controlador;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import Modelo.Cliente;
+import DTO.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 

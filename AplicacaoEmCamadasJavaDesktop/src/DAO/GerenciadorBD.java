@@ -1,4 +1,4 @@
-package Controlador;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,9 @@ public class GerenciadorBD {
     private final String senha = "1234";
 
     public Connection conectar() throws SQLException {
+        
         String textoDeConexao = "jdbc:mysql://" + servidor + "/" + banco;
+        
         return DriverManager.getConnection(textoDeConexao, login, senha);
     }
 

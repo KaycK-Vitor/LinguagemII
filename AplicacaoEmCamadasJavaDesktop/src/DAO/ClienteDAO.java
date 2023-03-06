@@ -36,14 +36,14 @@ public class ClienteDAO {
                 "SELECT ID, Nome, Email, Telefone FROM cliente"); ResultSet rs = stmt.executeQuery()) {
             
             while (rs.next()) {
-                Cliente c = new Cliente();
+                Cliente cliente = new Cliente();
                 
-                c.setId(rs.getInt("id"));
-                c.setNome(rs.getString("nome"));
-                c.setEmail(rs.getString("email"));
-                c.setTelefone(rs.getLong("telefone"));
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getLong("telefone"));
                 
-                listaDeClientes.add(c);
+                listaDeClientes.add(cliente);
             }
             
         }

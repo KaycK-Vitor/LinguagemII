@@ -1,0 +1,20 @@
+1) Crie um novo projeto java no netbeans (Java with Ant -> Java Application);
+
+2) Dentro do projeto, crie os pacotes VIEW, DAO, DTO e UTIL;
+
+3) Dentro do pacote UTIL adicione o conector java (mysql-connector-java-8.0.29.jar);
+
+4) Em configurações do projeto, associe o conector java ao projeto 
+(Properties->Libraries->Classpath->Add JAR/Folder);
+
+5) Dentro do pacote DAO adicione a classe GerenciadorBD com seu conteúdo;
+
+6) Dentro do pacote DTO adicione a classe Cliente com seu conteúdo;
+
+7) Dentro do pacote DAO adicione a classe ClienteDAO com seu conteúdo;
+
+8) Dentro do pacote VIEW adicione a classe TelaDeCadastroDeClienteGUI com 
+seu conteúdo (criar design de tela e eventos dos componentes);
+
+9) Dentro do pacote VIEW adicione a classe TelaDeListagemDeClientesGUI com 
+seu conteúdo (criar design de tela e eventos dos componentes);
